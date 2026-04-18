@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: proxy-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: PROXY_URL
+        value: http://proxy.example.com
+      - key: PROXY_PORT
+        value: 8080
+      - key: PROXY_PROTOCOL
+        value: http
+      - key: PROXY_COUNTRY
+        value: US
+      - key: PROXY_ANONYMITY
+        value: elite
